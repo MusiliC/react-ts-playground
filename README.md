@@ -1,1 +1,1 @@
-# react-typecript-playground
+# react-typescript-playground
