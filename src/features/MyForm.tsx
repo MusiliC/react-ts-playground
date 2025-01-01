@@ -1,17 +1,24 @@
 import { Button } from "@/components/ui/button";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { type SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
 
-type FormFields = {
-  email: string;
-  password: string;
-};
+
+const fromSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(8),
+})
+
+type FormFields = z.infer<typeof fromSchema>
 
 function MyForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormFields>();
+  } = useForm<FormFields>({
+    resolver: zodResolver(fromSchema),
+  });
 
   const onSubmit: SubmitHandler<FormFields> = (data) => {
     console.log(data);
@@ -24,15 +31,7 @@ function MyForm() {
       </div>
       <form className="flex flex-col space-y-4">
         <input
-          {...register("email", {
-            required: "Email is required",
-            validate: (value) => {
-              if (!value.includes("@")) {
-                return "Email must contain @";
-              }
-              return true;
-            },
-          })}
+          {...register("email")}
           type="text"
           className="border border-gray-500 rounded-sm p-2"
           placeholder="Email"
@@ -41,13 +40,7 @@ function MyForm() {
           <span className="text-red-500">{errors.email.message}</span>
         )}
         <input
-          {...register("password", {
-            required: "Password is required",
-            minLength: {
-              value: 8,
-              message: "Password must be at least 8 characters",
-            },
-          })}
+          {...register("password")}
           type="text"
           className="border border-gray-500 rounded-sm p-2"
           placeholder="Password"
