@@ -34,23 +34,26 @@ type UserForm = z.infer<typeof userFormSchema>;
 // validate -> user parse()/or safeParse()
 // console.log(userSchema.parse(user));
 
-function MyZod() {
 
+
+function MyZod() {
   const form = useForm<UserForm>({
     resolver: zodResolver(userFormSchema),
   });
 
   function handleSubmit(data: UserForm) {
     const result = userFormSchema.safeParse(data);
-    if(result.success){
+    if (result.success) {
       console.log(result.data);
       // handle success
-  }else{
-    console.log(result.error.errors);
-    // handle error
-  }
+    } else {
+      console.log(result.error.errors);
+      // handle error
+    }
 
-  return <div>Zod</div>;
+  }
+  return <div>Zod Tut</div>;
+
 }
 
-export default MyZod;
+export default MyZod

@@ -1,4 +1,6 @@
+import MyForm from "./features/MyForm";
 import MyZod from "./features/MyZod";
+
 
 function App() {
   return (
@@ -11,6 +13,7 @@ function App() {
       {/* components */}
       <div>
         <MyZod/>
+        <MyForm/>
       </div>
     </main>
   );
