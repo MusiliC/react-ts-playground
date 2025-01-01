@@ -3,13 +3,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
-
 const fromSchema = z.object({
-    email: z.string().email(),
-    password: z.string().min(8),
-})
+  email: z.string().email({
+    message: "Invalid email address.",
+  }),
+  password: z.string().min(8, {
+    message: "Password must be at least 8 characters.",
+  }),
+});
 
-type FormFields = z.infer<typeof fromSchema>
+type FormFields = z.infer<typeof fromSchema>;
 
 function MyForm() {
   const {
