@@ -36,7 +36,7 @@ function MultiStepFormTwo() {
   const {
     register,
     handleSubmit,
-     watch,
+    watch,
     reset,
     trigger,
     formState: { errors },
@@ -44,25 +44,22 @@ function MultiStepFormTwo() {
     resolver: zodResolver(MyMultiStepFormSchema),
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [previousStep, setPreviousStep] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<Partial<MemberInputs>>({});
 
+  type FieldName = keyof MemberInputs;
+
   const next = async () => {
-    // const fields = steps[currentStep].fields;
-    // const output = await trigger(fields as FieldName[], {
-    //   shouldFocus: true,
-    // });
-    // if (!output) return;
-    // if (currentStep < steps.length - 1) {
-    //   if (currentStep === steps.length - 2) {
-    //     await handleSubmit(processForm)();
-    //   }
-    //   setPreviousStep(currentStep);
-    //   setCurrentStep((step) => step + 1);
-    // }
-      const currentData = watch();
-       setFormData((prev) => ({ ...prev, ...currentData }));
+    const fields = steps[currentStep].fields;
+    const output = await trigger(fields as FieldName[], {
+      shouldFocus: true,
+    });
+    if (!output) return;
+  
+    const currentData = watch();
+    setFormData((prev) => ({ ...prev, ...currentData }));
 
     if (currentStep < steps.length - 1) {
       setPreviousStep(currentStep);
@@ -98,10 +95,16 @@ function MultiStepFormTwo() {
         className="my-5"
         onSubmit={handleSubmit(handleFormSubmit)}
       >
-        {currentStep === 0 && <PersonalInformation register={register} />}
-        {currentStep === 1 && <AddressInformation register={register} />}
-        {currentStep === 2 && <NextOfKinInfo register={register} />}
-        {currentStep === 3 && <MultiFormSubmitPage data = {formData} />}
+        {currentStep === 0 && (
+          <PersonalInformation errors={errors} register={register} />
+        )}
+        {currentStep === 1 && (
+          <AddressInformation errors={errors} register={register} />
+        )}
+        {currentStep === 2 && (
+          <NextOfKinInfo errors={errors} register={register} />
+        )}
+        {currentStep === 3 && <MultiFormSubmitPage data={formData} />}
       </form>
 
       <FormProgressButtons
