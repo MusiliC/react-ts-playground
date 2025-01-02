@@ -22,12 +22,12 @@ const steps: progressStepsType[] = [
   {
     id: "Step 2",
     name: "Address",
-    fields: ["country", "state"],
+    fields: ["country","city", "state"],
   },
   {
     id: "Step 3",
     name: "Next of Kin",
-    fields: ["relation", "number", "city"],
+    fields: ["relation", "number", "location"],
   },
   { id: "Step 4", name: "Complete" },
 ];
