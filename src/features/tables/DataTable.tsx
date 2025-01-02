@@ -68,6 +68,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
+      <p className="py-3">Shadcn/TanStack Table</p>
       <div className="flex items-center py-4">
         <Input
           placeholder="Filter emails..."
