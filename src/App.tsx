@@ -1,3 +1,4 @@
+import MultiStepForm from "./features/forms/MultiStepForm";
 import MyForm from "./features/forms/MyForm";
 import UserForm from "./features/forms/UserForm";
 
@@ -22,6 +23,7 @@ function App() {
           email:"doe@gmail.com",
           role: "editor"
         }} />
+        <MultiStepForm/>
       </div>
     </main>
   );
