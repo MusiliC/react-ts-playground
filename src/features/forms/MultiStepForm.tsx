@@ -69,7 +69,7 @@ export default function MultiStepForm() {
   };
 
   return (
-    <section className="flex flex-col justify-between p-10">
+    <section className="flex flex-col justify-between py-10">
       {/* steps */}
       <nav aria-label="Progress">
         <ol role="list" className="space-y-4 md:flex md:space-x-8 md:space-y-0">
