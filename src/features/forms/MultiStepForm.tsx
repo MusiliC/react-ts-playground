@@ -6,6 +6,7 @@ import { FormDataSchema } from "@/lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import ProgressBar from "../ui/ProgressBar";
+import FormProgressButtons from "../ui/FormProgressButtons";
 
 type Inputs = z.infer<typeof FormDataSchema>;
 
@@ -13,9 +14,9 @@ export type progressStepsType = {
   id: string;
   name: string;
   fields?: string[];
-}
+};
 
-const steps = [
+const steps: progressStepsType[] = [
   {
     id: "Step 1",
     name: "Personal Information",
@@ -78,8 +79,7 @@ export default function MultiStepForm() {
   return (
     <section className="flex flex-col justify-between py-10">
       {/* steps */}
-     <ProgressBar steps={steps} currentStep={currentStep} />
-
+      <ProgressBar steps={steps} currentStep={currentStep} />
       {/* Form */}
       <form className="mt-4 py-4" onSubmit={handleSubmit(processForm)}>
         {currentStep === 0 && (
@@ -313,54 +313,13 @@ export default function MultiStepForm() {
           </>
         )}
       </form>
-
       {/* Navigation */}
-      <div className="mt-8 pt-5">
-        <div className="flex justify-between">
-          <button
-            type="button"
-            onClick={prev}
-            disabled={currentStep === 0}
-            className="rounded bg-white px-2 py-1 text-sm font-semibold text-sky-900 shadow-sm ring-1 ring-inset ring-sky-300 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="h-6 w-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 19.5L8.25 12l7.5-7.5"
-              />
-            </svg>
-          </button>
-          <button
-            type="button"
-            onClick={next}
-            disabled={currentStep === steps.length - 1}
-            className="rounded bg-white px-2 py-1 text-sm font-semibold text-sky-900 shadow-sm ring-1 ring-inset ring-sky-300 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="h-6 w-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
+      <FormProgressButtons
+        steps={steps}
+        currentStep={currentStep}
+        prev={prev}
+        next={next}
+      />{" "}
     </section>
   );
 }

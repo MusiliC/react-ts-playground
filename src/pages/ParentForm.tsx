@@ -1,4 +1,5 @@
-import MultiStepForm from "@/features/forms/MultiStepForm";
+// import MultiStepForm from "@/features/forms/MultiStepForm";
+import MultiStepFormTwo from "@/features/forms/MultiStepFormTwo";
 import MyForm from "@/features/forms/MyForm";
 import UserForm from "@/features/forms/UserForm";
 
@@ -17,7 +18,8 @@ function ParentForm() {
           role: "editor",
         }}
       />
-      <MultiStepForm />
+      {/* <MultiStepForm /> */}
+      <MultiStepFormTwo/>
     </div>
   );
 }

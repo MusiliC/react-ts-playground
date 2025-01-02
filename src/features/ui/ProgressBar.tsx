@@ -1,8 +1,10 @@
 import { progressStepsType } from "../forms/MultiStepForm";
 
-type StepProps = {
+export type StepProps = {
   steps: progressStepsType[];
   currentStep: number;
+  prev?: () => void;
+  next?: () => void;
 };
 
 function ProgressBar({ steps, currentStep }: StepProps) {
