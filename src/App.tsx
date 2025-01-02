@@ -1,7 +1,3 @@
-import MultiStepForm from "./features/forms/MultiStepForm";
-import MyForm from "./features/forms/MyForm";
-import UserForm from "./features/forms/UserForm";
-
 
 
 function App() {
@@ -11,6 +7,7 @@ function App() {
         <p className="text-3xl w-1/2 text-start ">
           Welcome to my playground, just playing around with react and UI
         </p>
+        <Button>Click Me To Get Started</Button>
       </div>
       {/* components */}
       <div>      
