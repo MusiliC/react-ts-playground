@@ -7,7 +7,7 @@ import {
   ChevronsRight,
 } from "lucide-react";
 
-type MyPaginationProps<T> = {
+export type MyPaginationProps<T> = {
   table: Table<T>;
 };
 

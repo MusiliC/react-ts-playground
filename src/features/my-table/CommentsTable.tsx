@@ -21,6 +21,7 @@ import {
 import React from "react";
 import { Input } from "@/components/ui/input";
 import MyPagination from "../ui/MyPagination";
+import MyVisibleColumns from "../ui/MyVisibleColumns";
 
 
 interface CommentsTableProps<TData, TValue> {
@@ -54,7 +55,7 @@ function CommentsTable<TData, TValue>({
     // todo -> taking a different approach in pagination
     initialState: {
       pagination: {
-        pageSize: 50,
+        pageSize: 10,
       },
     },
     getCoreRowModel: getCoreRowModel(),
@@ -75,6 +76,7 @@ function CommentsTable<TData, TValue>({
           }
           className="max-w-sm"
         />
+      <MyVisibleColumns table={table} />
       </div>
       <div className="mt-2 rounded-lg overflow-hidden border border-gray-200">
         <Table>
