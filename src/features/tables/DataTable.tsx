@@ -79,10 +79,12 @@ export function DataTable<TData, TValue>({
           className="max-w-sm"
         />
 
-        <div className="flex-1 ml-10 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
+        {table.getFilteredSelectedRowModel().rows.length? (
+          <div className="flex-1 ml-10 text-sm text-muted-foreground">
+            {table.getFilteredSelectedRowModel().rows.length} of{" "}
+            {table.getFilteredRowModel().rows.length} row(s) selected.
+          </div>
+        ): null}
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
