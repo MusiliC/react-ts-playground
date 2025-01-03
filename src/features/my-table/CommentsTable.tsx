@@ -4,6 +4,7 @@ import {
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getPaginationRowModel,
   getSortedRowModel,
   SortingState,
   useReactTable,
@@ -19,7 +20,8 @@ import {
 } from "@/components/ui/table";
 import React from "react";
 import { Input } from "@/components/ui/input";
-
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
 
 interface CommentsTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -30,10 +32,10 @@ function CommentsTable<TData, TValue>({
   data,
   columns,
 }: CommentsTableProps<TData, TValue>) {
-
-   const [sorting, setSorting] = React.useState<SortingState>([]);
-     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    [])
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  );
 
   const table = useReactTable({
     data,
@@ -44,9 +46,16 @@ function CommentsTable<TData, TValue>({
     // filtering properties
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
     state: {
       sorting,
-      columnFilters
+      columnFilters,
+    },
+    // todo -> taking a different approach in pagination
+    initialState: {
+      pagination: {
+        pageSize: 50,
+      },
     },
     getCoreRowModel: getCoreRowModel(),
   });
@@ -55,6 +64,7 @@ function CommentsTable<TData, TValue>({
 
   return (
     <div>
+      <p className="py-3">My Revised Table</p>
       <div className="flex items-center py-4">
         {/* todo -> Work on dynamically filtering values and pass them as props in the table */}
         <Input
@@ -115,6 +125,43 @@ function CommentsTable<TData, TValue>({
             )}
           </TableBody>
         </Table>
+      </div>
+      <div className="flex items-center justify-end space-x-2 py-4">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => table.setPageIndex(0)}
+          disabled={!table.getCanPreviousPage()}
+        >
+          <ChevronsLeft />
+        </Button>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
+          <ChevronLeft />
+        </Button>
+        <span className="px-2">
+          {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+        </span>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+        >
+          <ChevronRight />
+        </Button>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+          disabled={!table.getCanNextPage()}
+        >
+          <ChevronsRight />
+        </Button>
       </div>
     </div>
   );
