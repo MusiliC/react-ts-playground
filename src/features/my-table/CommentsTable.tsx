@@ -20,8 +20,8 @@ import {
 } from "@/components/ui/table";
 import React from "react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
+import MyPagination from "../ui/MyPagination";
+
 
 interface CommentsTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -126,43 +126,8 @@ function CommentsTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.setPageIndex(0)}
-          disabled={!table.getCanPreviousPage()}
-        >
-          <ChevronsLeft />
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          <ChevronLeft />
-        </Button>
-        <span className="px-2">
-          {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-        </span>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          <ChevronRight />
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-          disabled={!table.getCanNextPage()}
-        >
-          <ChevronsRight />
-        </Button>
-      </div>
+
+     <MyPagination table = {table}/>
     </div>
   );
 }
