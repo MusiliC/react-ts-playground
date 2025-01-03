@@ -12,7 +12,6 @@ import { Button } from "@/components/ui/button";
 import { MoreHorizontal, ArrowUpDown } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 
-
 export const columns: ColumnDef<PaymentType>[] = [
   {
     id: "select",

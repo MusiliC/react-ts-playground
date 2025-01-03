@@ -32,6 +32,7 @@ export const commentsColumns: ColumnDef<CommentsType>[] = [
   },
   {
     accessorKey: "name",
+    // todo -> can pass it as children so as to style the column
     header: ({ column }) => <SortableColumns column={column} label="Name" />,
   },
   {
