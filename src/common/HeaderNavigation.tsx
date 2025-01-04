@@ -15,6 +15,7 @@ interface NavigationItem {
 const navigation: NavigationItem[] = [
   { name: "Forms", href: "/", current: false },
   { name: "Tables", href: "/tables", current: false },
+  { name: "Roles/Auth", href: "/auth", current: false },
 ];
 
 function classNames(...classes: (string | boolean | undefined)[]): string {
