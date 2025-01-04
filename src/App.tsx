@@ -18,7 +18,6 @@ function App() {
       <BrowserRouter>
         <main>
           <Routes>
-            <Route path="/auth" element={<AuthPage />} ></Route>
             <Route
               element={
                 <ProtectedRoute>
@@ -28,6 +27,7 @@ function App() {
             >
               <Route index element={<ParentForm />} />
               <Route path="/tables" element={<TablesPage />} />
+              <Route path="/auth" element={<AuthPage />}></Route>
 
               {/* Admin Only Route */}
               <Route
