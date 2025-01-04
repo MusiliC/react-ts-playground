@@ -45,7 +45,7 @@ function App() {
               <Route
                 path="/trustee"
                 element={
-                  <ProtectedRoute roles={["admin"]}>
+                  <ProtectedRoute roles={["trustee"]}>
                     <Trustee />
                   </ProtectedRoute>
                 }
@@ -57,7 +57,7 @@ function App() {
               <Route
                 path="/agent"
                 element={
-                  <ProtectedRoute roles={["admin"]}>
+                  <ProtectedRoute roles={["agent"]}>
                     <Agent />
                   </ProtectedRoute>
                 }
