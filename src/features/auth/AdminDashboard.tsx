@@ -2,7 +2,9 @@
 
 const AdminDashboard = () => {
   return (
-    <div>A nested router for AdminDashboard</div>
+    <div>A nested router for AdminDashboard
+      
+    </div>
   )
 }
 
