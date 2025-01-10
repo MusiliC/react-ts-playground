@@ -80,7 +80,7 @@ function MultiStepFormTwo() {
   };
 
   return (
-    <div className="w-1/2 my-10">
+    <div className="w-3/ my-10">
       <div>
         <p className="py-3">My Multi-Step Form</p>
       </div>

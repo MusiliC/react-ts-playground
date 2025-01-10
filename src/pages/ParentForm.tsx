@@ -1,6 +1,7 @@
 // import MultiStepForm from "@/features/forms/MultiStepForm";
 import MultiStepFormTwo from "@/features/forms/MultiStepFormTwo";
 import MyForm from "@/features/forms/MyForm";
+import ReactSelect from "@/features/forms/ReactSelect";
 import UserForm from "@/features/forms/UserForm";
 
 function ParentForm() {
@@ -20,6 +21,7 @@ function ParentForm() {
       />
       {/* <MultiStepForm /> */}
       <MultiStepFormTwo/>
+      <ReactSelect/>
     </div>
   );
 }
