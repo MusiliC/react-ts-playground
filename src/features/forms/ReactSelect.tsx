@@ -12,7 +12,7 @@ const ReactSelect = () => {
   };
 
   return (
-    <div className="my-20">
+    <div className="my-10">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="schemeId"

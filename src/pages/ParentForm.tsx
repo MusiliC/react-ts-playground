@@ -2,6 +2,7 @@
 import MultiStepFormTwo from "@/features/forms/MultiStepFormTwo";
 import MyForm from "@/features/forms/MyForm";
 import ReactSelect from "@/features/forms/ReactSelect";
+import ReactSelectNoShadcn from "@/features/forms/ReactSelectNoShadcn";
 import UserForm from "@/features/forms/UserForm";
 
 function ParentForm() {
@@ -22,6 +23,7 @@ function ParentForm() {
       {/* <MultiStepForm /> */}
       <MultiStepFormTwo/>
       <ReactSelect/>
+      <ReactSelectNoShadcn/>
     </div>
   );
 }
